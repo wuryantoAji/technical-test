@@ -1,4 +1,6 @@
-CREATE DATABASE `attendance_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE IF NOT EXISTS `attendance_db`; 
+
+USE `attendance_db`;
 
 -- attendance_db.users definition
 
@@ -30,18 +32,7 @@ CREATE TABLE `attendance` (
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci
-
--- attendance_db.sessions definition
-
-CREATE TABLE `sessions` (
-  `sid` varchar(36) NOT NULL,
-  `expires` datetime DEFAULT NULL,
-  `data` text,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  PRIMARY KEY (`sid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO attendance_db.users
 (uuid, name, email, password, gender, `role`, createdAt, updatedAt)

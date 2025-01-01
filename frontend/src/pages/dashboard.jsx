@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-restricted-imports */
 import React, { useEffect } from 'react';
 import Layout from './layout';
-import Welcome from "../components/Welcome";
+import Welcome from "../components/welcome.jsx";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../features/authSlice";

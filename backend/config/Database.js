@@ -1,9 +1,9 @@
 import { Sequelize } from "sequelize";
 
 const db = new Sequelize('attendance_db', 'root', 'password', {
-    host: 'localhost',
+    host: 'mysql-container',
     dialect: 'mysql',
-    port: 3307
+    port: 3306
 });
 
 export default db;

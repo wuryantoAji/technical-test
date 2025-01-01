@@ -11,7 +11,7 @@ const attendanceList = () => {
     }, []);
 
   const getAttendances = async () => {
-    const response = await axios.get("http://localhost:5000/attendances");
+    const response = await axios.get("http://localhost:5001/attendances");
     setAttendances(response.data);
   }
 

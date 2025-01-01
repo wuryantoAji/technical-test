@@ -1,0 +1,15 @@
+{
+    "name": "technical-test-dexa-group",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "install": "cd frontend && npm install && cd ../backend && npm install",
+        "start": "npm run server",
+        "server": "cd backend && nodemon app.js",
+        "client": "cd frontend && npm start"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

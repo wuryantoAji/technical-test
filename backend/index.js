@@ -21,8 +21,8 @@ const store = new sessionStore({
 // (async () => {
 //     try {
 //         await db.authenticate();
-//         console.log('Connection has been established successfully');    
-//         await db.sync();
+//         console.log('Connection has been established successfully');  
+//         // await db.sync();
 //     } catch (error) {
 //         console.log('Unable to connect to database: ', error);
 //     }
@@ -40,17 +40,16 @@ app.use(session({
 
 app.use(cors({
     credentials: true,
-    origin: ['http://localhost:5174'],
+    origin: ['http://localhost:5175'],
 }))
 
 app.use(express.json());
 app.use(userRoute);
 app.use(attendanceRoute);
 app.use(authRoute);
-// Serve static files from the "uploads" directory
 app.use("/uploads", express.static("uploads"));
 
-// store.sync();
+store.sync();
 
 app.listen(process.env.APP_PORT, () => {
     console.log('Server up and running');

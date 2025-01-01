@@ -2,6 +2,7 @@ import Users from "../models/UserModel.js";
 import argon2 from "argon2";
 
 export const Login = async (request, response) => {
+    console.log(request.body);
     const dbResponse = await Users.findOne({
         where: {
             email: request.body.email,
@@ -36,7 +37,6 @@ export const Me = async (request, response) => {
 }
 
 export const LogOut = (request, response) => {
-    console.log("check here");
     request.session.destroy((error)=>{
         if(error) return response.status(400).json({msg:"Cannot logout"});
         response.status(200).json({msg:"You have logout"});

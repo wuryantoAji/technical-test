@@ -36,7 +36,6 @@ export const createAttendance = async (request, response) => {
     const { clockIn, clockOut } = request.body;
     const photoName = request.file.filename;
     const fileUrl = `${request.protocol}://${request.get("host")}/uploads/${request.file.filename}`;
-    console.log(fileUrl);
     try {
         await Attendances.create({
             photoUrl: fileUrl,

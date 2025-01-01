@@ -51,12 +51,12 @@ Content-Type: application/json
 
 ###
 // Login user admin
-POST http://localhost:5000/login
+POST http://localhost:5001/login
 Content-Type: application/json
 
 {
-    "email": "john@mayer.com",
-    "password": "password"
+    "email": "admin@admin.com",
+    "password": "123456"
 }
 
 ###
@@ -71,11 +71,11 @@ Content-Type: application/json
 
 ### 
 // Get current session
-GET http://localhost:5000/me
+GET http://localhost:5001/me
 
 ###
 // Logout user
-DELETE http://localhost:5000/logout
+DELETE http://localhost:5001/logout
 
 
 ###
