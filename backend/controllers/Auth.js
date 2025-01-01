@@ -36,6 +36,7 @@ export const Me = async (request, response) => {
 }
 
 export const LogOut = (request, response) => {
+    console.log("check here");
     request.session.destroy((error)=>{
         if(error) return response.status(400).json({msg:"Cannot logout"});
         response.status(200).json({msg:"You have logout"});

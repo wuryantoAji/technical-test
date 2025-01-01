@@ -31,6 +31,13 @@ const Attendances = db.define('attendance' , {
             notEmpty: true,
         },
     },
+    photoUrl: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        validate: {
+            notEmpty: true,
+        },
+    },
     userId:{
         type: DataTypes.INTEGER,
         allowNull: false,

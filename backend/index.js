@@ -40,13 +40,15 @@ app.use(session({
 
 app.use(cors({
     credentials: true,
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:5174'],
 }))
 
 app.use(express.json());
 app.use(userRoute);
 app.use(attendanceRoute);
 app.use(authRoute);
+// Serve static files from the "uploads" directory
+app.use("/uploads", express.static("uploads"));
 
 // store.sync();
 

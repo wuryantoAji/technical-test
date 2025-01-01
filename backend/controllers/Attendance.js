@@ -5,9 +5,9 @@ import { Op } from "sequelize";
 export const getAllAttendance = async (request, response) => {
     try {
         let dbResponse;
-        if (request.role === "admin") {
+        if (request.role === "HRD") {
             dbResponse = await Attendances.findAll({
-                attributes: ['uuid', 'photoFile', 'clockIn', 'clockOut'],
+                attributes: ['uuid', 'photoFile', 'clockIn', 'clockOut', 'photoUrl'],
                 include:[{
                     model: Users,
                     attributes:['name', 'email', 'role']
@@ -15,7 +15,7 @@ export const getAllAttendance = async (request, response) => {
             });
         }else{
             dbResponse = await Attendances.findAll({
-                attributes: ['uuid', 'photoFile', 'clockIn', 'clockOut'],
+                attributes: ['uuid', 'photoFile', 'clockIn', 'clockOut', 'photoUrl'],
                 where: {
                     userId: request.userId
                 },
@@ -32,11 +32,17 @@ export const getAllAttendance = async (request, response) => {
 }
 
 export const createAttendance = async (request, response) => {
-    const { photoFile } = request.body;
+    
+    const { clockIn, clockOut } = request.body;
+    const photoName = request.file.filename;
+    const fileUrl = `${request.protocol}://${request.get("host")}/uploads/${request.file.filename}`;
+    console.log(fileUrl);
     try {
         await Attendances.create({
-            photoFile: photoFile,
-            clockIn: Date.now,
+            photoUrl: fileUrl,
+            photoFile: photoName,
+            clockIn: clockIn,
+            clockOut: clockOut,
             userId: request.userId
         });
         response.status(201).json({msg: "Attendances has been created "});
